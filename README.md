@@ -88,3 +88,10 @@ Technologies Used:
 * xUnit: Unit testing
 * Swagger: API documentation
 
+Improvements:
+* Retrieve the best stories in parallel batches for improved performance.
+* Pagination support for large result sets.
+* Rate limiting to prevent abuse.
+* Background service to refresh the cache periodically.
+* Optimized serialization for large data sets.
+* Load testing to evaluate performance under heavy load.

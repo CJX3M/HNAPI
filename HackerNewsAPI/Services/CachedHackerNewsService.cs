@@ -32,13 +32,26 @@ namespace HackerNewsAPI.Services
         {
             return await _cache.GetOrCreateAsync("best_stories", async entry =>
             {
-                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5);
                 var storyIds = await GetBestStoryIdsAsync();
                 var stories = new List<Story>();
-                foreach (var storyId in storyIds)
+                // Process story IDs in batches of 10
+                foreach (var batch in storyIds.Chunk(10))
                 {
-                    var story = await _hackerNewsService.GetStoryDetailsAsync(storyId);
-                    stories.Add(story);
+                    var tasks = batch.Select(async storyId =>
+                    {
+                        try
+                        {
+                            return await _hackerNewsService.GetStoryDetailsAsync(storyId);
+                        }
+                        catch
+                        {
+                            // Log error and ignore failed requests
+                            return null;
+                        }
+                    });
+
+                    var batchStories = await Task.WhenAll(tasks);
+                    stories.AddRange(batchStories.Where(s => s != null));
                 }
                 // Sort stories by score in descending order
                 return stories.OrderByDescending(s => s.score).ToList();
