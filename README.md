@@ -35,6 +35,8 @@ A RESTful API built with ASP.NET Core to efficiently retrieve the top `n` storie
 
 3. **Run the application**:
 ```bash
+	dotnet run
+```
 
 4. Access Swagger UI:
    - Open a browser and navigate to `https://localhost:5001/swagger/`.
