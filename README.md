@@ -16,7 +16,7 @@ A RESTful API built with ASP.NET Core to efficiently retrieve the top `n` storie
 
 ## Prerequisites
 
-- [.NET 6 SDK](https://dotnet.microsoft.com/download)
+- [.NET 8 SDK](https://dotnet.microsoft.com/download)
 - IDE (e.g., [Visual Studio 2022](https://visualstudio.microsoft.com/), [VS Code](https://code.visualstudio.com/))
 - [Docker](https://www.docker.com/) (optional, for containerization)
 
