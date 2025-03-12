@@ -82,6 +82,19 @@ Tet verify that:
 * Story detalils are correctly fetched and serialized
 * The API returns stories sorted by score
 
+Deployment
+
+Docker
+
+1. Build the Docker image:
+```bash	
+docker build -t hacker-news-api .
+```
+2. Run the Docker container:
+```bash
+docker run -d -p 5000:80 hacker-news-api
+```
+ 
 Technologies Used:
 * ASP.NET Core 8
 * Scrutor: Service decoration
